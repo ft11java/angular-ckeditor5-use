@@ -1,0 +1,50 @@
+<div class="container mt-3">
+    <form [formGroup]="newsCreateForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-12 ">
+                <div class="form-floating">
+                    <input name="userName" class="form-control text-success" placeholder="Havuz Numarası" type="text"
+                        formControlName="newsTitle" id="poolNumber" />
+                    <label for="poolNumber" class="text-primary fst-italic">Haber Başlığı</label>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                
+                <div>
+                    <ckeditor formControlName="newsBody" [editor]="Editor"></ckeditor>
+                </div>
+            </div>
+            <div class="col-12  mt-3">
+            <select class="form-select text-success" id="accountNonExpired" aria-label="Floating label select example"
+                formControlName="deploy">
+                <option selected disabled class="text-success fst-italic fw-bold">
+                    Yayınlanma Durumu
+                </option>
+                <option value="true">Yayınla</option>
+                <option value="false">Taslak</option>
+            </select>
+        </div>
+        </div>
+     
+            <div class="row">
+                <div class="col-12 col-sm-6 mt-2">
+
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" accept="image/*" (change)="onFileChange($event)" id="inputGroupFile02" >
+                        
+                    </div>
+                </div>
+            </div>
+      
+        <div class="col-4 col-sm-3">
+            <div class="form-group d-grid gap-2">
+                <button type="submit" class="btn btn-warning btn-block fw-bold" >Kaydet</button>
+            </div>
+        </div>
+    </form>
+    <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+    <img [src]="imageURL" >
+  </div>
+ 
+</div>
+
